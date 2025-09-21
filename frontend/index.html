@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UNETI Notes</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-monokai-pro.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div class="brand">UNETI <span>Notes</span></div>
+      <p class="tagline">Nơi lưu trữ và chia sẻ ghi chú, code học tập</p>
+
+      <div class="profile hidden" id="profile">
+        <img src="https://i.pravatar.cc/60" alt="avatar" />
+        <div>
+          <div class="name" id="profile-name">Khách</div>
+          <div class="role" id="profile-role">Chưa đăng nhập</div>
+        </div>
+      </div>
+
+      <div class="search"><input id="search" placeholder="Tìm kiếm..." /></div>
+
+      <ul class="menu">
+        <li data-type="latest">Mới nhất</li>
+        <li data-type="fav">Yêu thích</li>
+        <li data-type="tags">Tags</li>
+        <li data-type="docs">Tài liệu</li>
+      </ul>
+
+      <div class="filters">
+        <button data-lang="all" class="chip active">Tất cả</button>
+        <button data-lang="python" class="chip">Python</button>
+        <button data-lang="java" class="chip">Java</button>
+      </div>
+
+      <div class="actions">
+        <button id="theme-toggle" class="toggle"></button>
+        <div class="auth-row">
+          <button id="login-open" class="btn subtle">Đăng nhập</button>
+          <button id="logout-btn" class="btn subtle hidden">Đăng xuất</button>
+        </div>
+        <button id="admin-open" class="btn primary hidden">+ Thêm note</button>
+      </div>
+
+      <div class="extra">
+        <h4>Tóm tắt</h4>
+        <ul>
+          <li>Tổng số note: <span id="stat-notes">0</span></li>
+          <li>Ngôn ngữ phổ biến: Python</li>
+        </ul>
+
+        <h4>Liên kết</h4>
+        <ul>
+          <li>
+            <a href="https://github.com/hoaug-tran" target="_blank">Github</a>
+          </li>
+          <li><a href="#">Docs</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <main>
+      <section id="feed" class="feed"></section>
+      <section id="viewer" class="viewer">
+        <div id="welcome">
+          <h2>UNETI Notes</h2>
+          <p>Chọn một ghi chú trong danh sách hoặc tạo mới để bắt đầu.</p>
+        </div>
+        <div class="viewer-inner hidden">
+          <div class="viewer-header">
+            <h1 id="v-title"></h1>
+            <div class="viewer-actions">
+              <button id="follow-btn" class="btn subtle">Theo dõi</button>
+              <button id="edit-open" class="btn subtle hidden">Sửa</button>
+            </div>
+          </div>
+          <article id="v-content" class="markdown"></article>
+          <div id="v-meta" class="meta"></div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Modal Login -->
+    <div id="modal-auth" class="modal hidden">
+      <div class="card">
+        <h3>Đăng nhập</h3>
+        <input id="login-email" placeholder="Email" />
+        <input id="login-password" type="password" placeholder="Mật khẩu" />
+        <div class="row">
+          <button id="modal-auth-close" class="btn subtle">Đóng</button>
+          <button id="login-submit" class="btn primary">Đăng nhập</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Admin -->
+    <div id="modal-admin" class="modal hidden">
+      <div class="card">
+        <h3>Thêm note</h3>
+        <input id="n-title" placeholder="Tiêu đề" />
+        <select id="n-lang">
+          <option value="python">Python</option>
+          <option value="java">Java</option>
+          <option value="javascript">JavaScript</option>
+        </select>
+        <input id="n-tags" placeholder="Tags, cách nhau bằng dấu phẩy" />
+        <textarea id="n-content" placeholder="Nội dung"></textarea>
+        <div class="row">
+          <button id="modal-admin-close" class="btn subtle">Đóng</button>
+          <button id="n-submit" class="btn primary">Lưu</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Edit -->
+    <div id="modal-edit" class="modal hidden">
+      <div class="card">
+        <h3>Sửa note</h3>
+        <input id="e-title" placeholder="Tiêu đề" />
+        <select id="e-lang">
+          <option value="python">Python</option>
+          <option value="java">Java</option>
+          <option value="javascript">JavaScript</option>
+        </select>
+        <input id="e-tags" placeholder="Tags" />
+        <textarea id="e-content" placeholder="Nội dung"></textarea>
+        <div class="row">
+          <button id="modal-edit-close" class="btn subtle">Đóng</button>
+          <button id="e-submit" class="btn primary">Cập nhật</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

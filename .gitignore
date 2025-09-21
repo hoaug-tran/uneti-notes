@@ -1,0 +1,29 @@
+node_modules/
+dist/
+build/
+.cache/
+.next/
+out/
+*.log
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# VSCode / IDE
+.vscode/
+.idea/
+*.swp
+
+# OS junk
+*.bak
+*.tmp
+*.temp
+
+# GitHub Pages build artifacts (nếu dùng gh-pages npm deploy)
+gh-pages/
