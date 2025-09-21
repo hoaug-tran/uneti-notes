@@ -209,7 +209,7 @@ body.dark .toggle::before {
   flex-direction: column;
   gap: 12px;
   overflow-y: auto;
-  padding-right: 6px; /* tránh dính scrollbar */
+  padding-right: 6px;
 }
 
 .feed .item {
@@ -386,7 +386,7 @@ code[class*="language-"],
 pre[class*="language-"] {
   font-family: "Fira Code", monospace;
   font-size: 15px;
-  color: #f8f8f2 !important; /* trắng rõ */
+  color: #f8f8f2 !important;
 }
 .token.keyword {
   color: #f92672 !important;
